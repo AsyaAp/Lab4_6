@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bartender Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="start-screen">
+        <h1 class="game-title">BARTENDER SIMULATOR</h1>
+        <button class="start-btn" id="start-btn">ИГРАТЬ</button>
+    </div>
+
+    <div id="tutorial-screen">
+        <div class="tutorial-container">
+            <div class="dialog-section">
+                <div class="day-info">День 0 - Обучение</div>
+                <div class="character-container">
+                    <div class="character-info">
+                        <div class="character-circle" id="tutorial-character-sprite"></div>
+                        <div class="character-name">Бармен</div>
+                    </div>
+                </div>
+                
+                <div class="bartender-thoughts" id="tutorial-thoughts"></div>
+                
+                <div class="dialog-box" id="tutorial-text">
+                    Приветствую! Сегодня твой первый день работы в нашем баре. Прежде чем начать, нужно прочесть инструктаж, который выдали при устройстве на работу.
+                </div>
+                
+                <div class="instructions collapsed" id="tutorial-instructions">
+                    <div class="instructions-header">
+                        <span>📖 Инструкция для бармена</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="recipes-content" id="tutorial-content">
+                        <div class="drink-recipe">
+                            <strong>Как смешивать напитки:</strong>
+                            <div class="drink-description">Клиенты заказывают напитки по названию или типу. Используй ингредиенты для создания напитков согласно рецептам. Следи за правильным порядком и количеством ингредиентов.</div>
+                        </div>
+                        <div class="drink-recipe">
+                            <strong>Учет состояния клиентов:</strong>
+                            <div class="drink-description">Обращай внимание на настроение клиентов. Грустным клиентам добавь Эликсир или Сироп для поднятия настроения. Взволнованным - Жидкую мяту или Сияющую шипучку для успокоения.</div>
+                        </div>
+                        <div class="drink-recipe">
+                            <strong>Способы приготовления:</strong>
+                            <div class="drink-description">Не забудь выбрать правильный способ приготовления: Лёд, Фламбирование или Взболтать. Это важно для правильного вкуса напитка.</div>
+                        </div>
+                        <div class="drink-recipe">
+                            <strong>Совет от опытного бармена:</strong>
+                            <div class="drink-description">Старайся внимательно слушать клиентов и учитывай их настроение. Правильно приготовленный напиток может изменить чей-то день! Ты справишься - я в тебе уверен!</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dialog-controls">
+                    <button class="next-btn" id="tutorial-next-btn">Начать работу →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-screen">
+        <div class="game-container">
+            <div class="dialog-section">
+                <div class="day-info" id="day-info">День 1 из 3</div>
+                <div class="character-container">
+                    <div class="character-info">
+                        <div class="character-circle" id="character-sprite"></div>
+                        <div class="character-name" id="character-name">Бармен</div>
+                    </div>
+                    <div class="customer-satisfaction" id="customer-satisfaction">
+                        ...
+                    </div>
+                </div>
+                
+                <div class="bartender-thoughts" id="bartender-thoughts"></div>
+                
+                <div class="dialog-box" id="dialog-text">
+                    Сегодняшняя смена начинается...
+                </div>
+                
+                <div class="dialog-controls">
+                    <button class="next-btn" id="next-dialog-btn">Далее →</button>
+                </div>
+                
+                <div class="story-progress">
+                    <h4>Прогресс:</h4>
+                    <p id="story-progress">День: 1/3 | Клиенты: 0/3 | Историй: 0/3</p>
+                </div>
+            </div>
+            
+            <div class="bar-section">
+                <h3>🎮 Барная стойка</h3>
+                
+                <div class="current-drink">
+                    <h4>Текущий заказ:</h4>
+                    <p id="current-order">Ожидаем клиента...</p>
+                </div>
+                
+                <div class="current-composition" id="current-composition">
+                    Состав: пусто
+                </div>
+
+                <div class="instructions collapsed" id="instructions">
+                    <div class="instructions-header">
+                        <span>📖 Книга рецептов</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="recipes-content" id="recipes-list"></div>
+                </div>
+                
+                <div class="glass" id="drink-glass">
+                    <div style="color: #666; text-align: center;">Бокал пуст</div>
+                </div>
+                
+                <div class="preparation-actions">
+                    <div class="prep-action" data-action="ice">❄️ Лёд</div>
+                    <div class="prep-action" data-action="flame">🔥 Фламбировать</div>
+                    <div class="prep-action" data-action="shake">🔄 Взболтать</div>
+                </div>
+                
+                <div class="ingredients-grid" id="ingredients-grid"></div>
+                
+                <div class="controls">
+                    <button id="serve-btn">🍸 Подать напиток</button>
+                    <button id="clear-btn">🚰 Очистить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="end-screen">
+        <h2 class="ending-title" id="ending-title">КОНЕЦ ИГРЫ</h2>
+        <div class="ending-text" id="ending-text"></div>
+        <div class="stats" id="ending-stats"></div>
+        <button class="start-btn" id="restart-btn">НАЧАТЬ ЗАНОВО</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

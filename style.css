@@ -1,0 +1,518 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #4a1c6b;
+    color: #e6e6e6;
+    font-family: 'Courier New', monospace;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+#start-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #4a1c6b, #6a1b9a);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.game-title {
+    font-size: clamp(24px, 8vw, 48px);
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+.start-btn {
+    background-color: #4cc9f0;
+    color: white;
+    border: none;
+    padding: 20px;
+    font-size: clamp(16px, 5vw, 20px);
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(76, 201, 240, 0.5);
+    width: 80px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.start-btn:hover {
+    background-color: #9d4edd;
+    box-shadow: 0 0 20px rgba(157, 78, 221, 0.7);
+}
+
+#tutorial-screen {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+}
+
+#game-screen {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    min-height: 100vh;
+}
+
+@media (min-width: 768px) {
+    .game-container {
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+}
+
+.tutorial-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog-section {
+    background-color: #16213e;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #0f3460;
+    display: flex;
+    flex-direction: column;
+}
+
+.bar-section {
+    background-color: #16213e;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #0f3460;
+    display: flex;
+    flex-direction: column;
+}
+
+.character-container {
+    display: flex;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.character-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: #0f3460;
+    padding: 8px;
+    border-radius: 5px;
+    min-height: 60px;
+}
+
+.character-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 3px solid #0f3460;
+    flex-shrink: 0;
+}
+
+.character-name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.customer-satisfaction {
+    flex: 1;
+    background-color: #0f3460;
+    padding: 8px;
+    border-radius: 5px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+}
+
+.dialog-box {
+    background-color: #000000;
+    padding: 12px;
+    border-radius: 8px;
+    min-height: 80px;
+    margin-bottom: 15px;
+    flex-grow: 1;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.bartender-thoughts {
+    background-color: #000000;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    font-style: italic;
+    border-left: 3px solid #9d4edd;
+    font-size: 14px;
+}
+
+.dialog-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.next-btn {
+    background-color: #4cc9f0;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.next-btn:hover {
+    background-color: #9d4edd;
+}
+
+.ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+@media (min-width: 480px) {
+    .ingredients-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+}
+
+.ingredient {
+    background-color: #000000;
+    padding: 8px 4px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    font-size: 12px;
+    min-height: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.ingredient:hover {
+    border-width: 3px;
+    border-style: solid;
+}
+
+.ingredient-name {
+    font-weight: bold;
+    margin-bottom: 2px;
+    color: #ffffff;
+    font-size: 11px;
+}
+
+.ingredient-desc {
+    font-size: 9px;
+    color: #cccccc;
+    text-align: center;
+}
+
+.glass {
+    background-color: #000000;
+    height: 100px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    position: relative;
+    border: 2px solid #0f3460;
+}
+
+.liquid-layer {
+    width: 80%;
+    border-radius: 5px 5px 0 0;
+    margin: 1px 0;
+}
+
+.glass-icon {
+    font-size: 48px;
+    text-align: center;
+}
+
+button {
+    background-color: #4cc9f0;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    margin: 3px;
+    font-size: 14px;
+    flex: 1;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #9d4edd;
+}
+
+.current-drink {
+    margin-bottom: 15px;
+}
+
+.story-progress {
+    margin-top: 15px;
+    padding: 8px;
+    background-color: #0f3460;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.preparation-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.prep-action {
+    background-color: #9d4edd;
+    padding: 8px 4px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    font-size: 14px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.prep-action:hover {
+    background-color: #000000;
+    border-color: #9d4edd;
+}
+
+.instructions {
+    background-color: #0f3460;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    max-height: 120px;
+    overflow-y: auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 13px;
+}
+
+.instructions.collapsed {
+    max-height: 30px;
+    overflow: hidden;
+}
+
+.instructions.collapsed .recipes-content {
+    display: none;
+}
+
+.instructions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.drink-recipe {
+    margin-bottom: 6px;
+    padding: 3px;
+    border-bottom: 1px solid #16213e;
+    font-size: 13px;
+}
+
+.drink-description {
+    font-size: 12px;
+    color: #a0a0a0;
+    margin-top: 2px;
+}
+
+#result-message {
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.current-composition {
+    background-color: #0f3460;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.day-info {
+    background-color: #0f3460;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#end-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.ending-title {
+    font-size: clamp(24px, 8vw, 36px);
+    margin-bottom: 20px;
+    color: #9d4edd;
+}
+
+.ending-text {
+    font-size: clamp(14px, 4vw, 18px);
+    margin-bottom: 30px;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.stats {
+    margin-bottom: 30px;
+    font-size: clamp(12px, 3vw, 16px);
+}
+
+.day-stats {
+    background-color: #0f3460;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.day-stat-item {
+    margin-bottom: 8px;
+    padding: 5px;
+    border-bottom: 1px solid #16213e;
+}
+
+.day-stat-customer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.customer-status {
+    font-size: 12px;
+    color: #a0a0a0;
+}
+
+.status-correct {
+    color: #4ade80;
+}
+
+.status-wrong {
+    color: #e94560;
+}
+
+.status-special {
+    color: #9d4edd;
+}
+
+/* Эффекты свечения для ингредиентов */
+.ingredient[data-color="#ffffff"] { 
+    box-shadow: 0 0 12px #ffffff; 
+}
+.ingredient[data-color="#ffffff"]:hover { 
+    border-color: #ffffff;
+}
+.ingredient[data-color="#ff6b9d"] { 
+    box-shadow: 0 0 12px #ff6b9d; 
+}
+.ingredient[data-color="#ff6b9d"]:hover { 
+    border-color: #ff6b9d;
+}
+.ingredient[data-color="#8b0000"] { 
+    box-shadow: 0 0 12px #8b0000; 
+}
+.ingredient[data-color="#8b0000"]:hover { 
+    border-color: #8b0000;
+}
+.ingredient[data-color="#ff4500"] { 
+    box-shadow: 0 0 12px #ff4500; 
+}
+.ingredient[data-color="#ff4500"]:hover { 
+    border-color: #ff4500;
+}
+.ingredient[data-color="#98fb98"] { 
+    box-shadow: 0 0 12px #98fb98; 
+}
+.ingredient[data-color="#98fb98"]:hover { 
+    border-color: #98fb98;
+}
+.ingredient[data-color="#00ff00"] { 
+    box-shadow: 0 0 12px #00ff00; 
+}
+.ingredient[data-color="#00ff00"]:hover { 
+    border-color: #00ff00;
+}
