@@ -19,7 +19,7 @@ Github pages: https://asyaap.github.io/Lab4_6/
 
 Скриншоты игры (на случай, если Pages не будут корректно работать): 
 
-https://git.hub.com/user-attachments/assets/a99a7a0d-8573-4008-826e-3d99e5aeb1a9
+https://github.com/user-attachments/assets/a99a7a0d-8573-4008-826e-3d99e5aeb1a9
 
 https://github.com/user-attachments/assets/3799fe0f-de6e-46a6-a649-c73aaea85024
 
